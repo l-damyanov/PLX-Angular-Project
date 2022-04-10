@@ -11,17 +11,18 @@
                 <p class="lesson-details-description">
                     {{selectedLesson?.description}}
                 </p>
-                <span class="lesson-details-likes">Likes: {{selectedLesson?.likes?.length}}</span>
+                <!-- <span class="lesson-details-likes">Likes: {{selectedLesson?.likes?.length}}</span> -->
             </article>
         </article>
     </article>
     <article class="lesson-details-btn-wrapper">
         <ng-container *ngIf="isOwner">
-            <button class="lesson-details-btn edit"><a routerLink="/update/{{selectedLesson?.objectId}}">Edit</a></button>
+            <button class="lesson-details-btn edit"><a
+                    routerLink="/update/{{selectedLesson?.objectId}}">Edit</a></button>
             <button class="lesson-details-btn delete"><a routerLink="/" (click)="handleDelete()">Delete</a></button>
         </ng-container>
 
-        <button class="lesson-details-btn like"><a href="">Like</a></button>
+        <!-- <button class="lesson-details-btn like"><a href="">Like</a></button> -->
     </article>
     <article class="lesson-information">
         <span class="lesson-information-span city"><i class="fas fa-city"></i>{{selectedLesson?.city}}</span>
@@ -31,3 +32,25 @@
         </span>
     </article>
 </article>
+<article class="comment-section-title">
+    <h2>Comments:</h2>
+</article>
+<article class="comment-form" *ngIf="isLogged">
+    <form [formGroup]="commentFormGroup" (ngSubmit)="handlePostComment()">
+        <label for="content"> Content</label>
+        <input formControlName="content" name="content" type="text" placeholder="Content..">
+
+        <div *ngIf="commentFormGroup.controls['content'].touched && commentFormGroup.controls['content'].invalid">
+            <p *ngIf="commentFormGroup.controls['content'].errors!['required']" class="error">
+                Comment content is required!
+            </p>
+            <p *ngIf="commentFormGroup.controls['content'].errors!['maxlength']" class="error">
+                Comment content must not be more than 40 chars long!
+            </p>
+        </div>
+
+        <button class="comment-btn" [disabled]="commentFormGroup.invalid">Post Comment</button>
+    </form>
+</article>
+
+<app-comments></app-comments>

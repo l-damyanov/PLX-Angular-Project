@@ -1,3 +1,4 @@
+import { IComment } from "./comment";
 import { IImage } from "./image";
 import { IUser } from "./user";
 
@@ -9,6 +10,7 @@ export interface ILesson {
     description: string;
     online: boolean;
     owner: IUser;
-    likes: string[];
+    comments: IComment[]
+    // likes: string[];
     results: ILesson[];
 }

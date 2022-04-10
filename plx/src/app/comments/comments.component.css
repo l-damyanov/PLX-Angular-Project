@@ -1,0 +1,12 @@
+.comment-section {
+    width: 100%;
+    background-color: #F2D3BA;
+    padding: 12px 0 ;
+}
+
+.comment-wrapper {
+    width: 60%;
+    margin: 0 auto;
+    padding: 12px 8px;
+    background-color: #DE9151;
+}

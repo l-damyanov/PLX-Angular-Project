@@ -19,6 +19,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { AuthModule } from './auth/auth.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UpdateComponent } from './update/update.component';
+import { CommentsComponent } from './comments/comments.component';
+import { CommentComponent } from './comment/comment.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { UpdateComponent } from './update/update.component';
     // LoginComponent,
     // RegisterComponent,
     CreateComponent,
-    UpdateComponent
+    UpdateComponent,
+    CommentsComponent,
+    CommentComponent
   ],
   imports: [
     BrowserModule,

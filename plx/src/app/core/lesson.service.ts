@@ -5,6 +5,7 @@ import { ILesson } from '../models/lesson';
 import { UserService } from './user.service';
 import { IUser } from '../models/user';
 import { IImage } from '../models/image';
+import { IComment } from '../models/comment';
 
 @Injectable({
   providedIn: 'root'
@@ -72,23 +73,34 @@ export class LessonService {
     return this.http.get<ILesson[]>(`${this.path}/classes/Lesson?where=${(JSON.stringify(query))}`, { headers: this.headers })
   }
 
-  // userCreatedLessons(userId: string) {
-  //   return this.http.get(`${this.path}/classes/Lesson?where=${this.createPointerQuery('lesson', 'Lesson', userId)}`, { headers: this.headers })
-  // }
+  postComment(body: {content: string, owner: Object, lesson: Object}): Observable<IComment> {
+    return this.http.post<IComment>(`${this.path}/classes/Comments/`, body, { 
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Parse-Application-Id': 'IeuI9QI8YYccmwWu3DOFKtFcRhLwtpFcVExXE4Fa',
+        'X-Parse-REST-API-Key': 'dlf9vABNHrqPn05eyiyB1tZnKmTcfFM4xV8m1oB7',
+        'X-Parse-Session-Token': this.currentUser.sessionToken
+      }
+     })
+  }
 
-  // createPointerQuery(propName: any, className: any, objectId: any) {
-  //   return this.createQuery({[propName]: this.createPointer(className, objectId)})
-  // }
+  commentsByLesson(lessonId: string) {
+    return this.http.get(`${this.path}/classes/Comments?where=${this.createPointerQuery('lesson', 'Lesson', lessonId)}&include=owner`, { headers: this.headers })
+  }
 
-  // createQuery(query: any) {
-  //   return encodeURIComponent(JSON.stringify(query));
-  // }
+  createPointerQuery(propName: any, className: any, objectId: any) {
+    return this.createQuery({[propName]: this.createPointer(className, objectId)})
+  }
 
-  // createPointer(className: any, objectId: any) {
-  //   return {
-  //     __type: 'Pointer',
-  //     className,
-  //     objectId
-  //   }
-  // }
+  createQuery(query: any) {
+    return encodeURIComponent(JSON.stringify(query));
+  }
+
+  createPointer(className: any, objectId: any) {
+    return {
+      __type: 'Pointer',
+      className,
+      objectId
+    }
+  }
 }

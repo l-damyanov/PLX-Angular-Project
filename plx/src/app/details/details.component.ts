@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LessonService } from '../core/lesson.service';
 import { UserService } from '../core/user.service';
@@ -17,7 +18,14 @@ export class DetailsComponent implements OnInit {
   sessionUser = this.userService.getUserData()
   isOwner!: boolean;
 
-  constructor(private route: ActivatedRoute, private lessonService: LessonService, private userService: UserService, private router: Router) { }
+  isLogged: boolean = this.userService.isLogged;
+
+  commentFormGroup: FormGroup = this.formBuilder.group({
+    'content': new FormControl('', [Validators.maxLength(40), Validators.required])
+  })
+
+  constructor(private route: ActivatedRoute, private lessonService: LessonService,
+    private userService: UserService, private router: Router, private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
@@ -27,7 +35,6 @@ export class DetailsComponent implements OnInit {
         this.userService.getUser(this.selectedLesson.owner.objectId).subscribe((data) => {
           this.ownerUser = data;
           this.isOwner = this.ownerUser.objectId == this.sessionUser.objectId;
-          console.log(this.selectedLesson)
         })
       })
     })
@@ -42,7 +49,37 @@ export class DetailsComponent implements OnInit {
   }
 
   handleEdit(): void {
+
+  }
+
+  handlePostComment(): void {
+    const content = this.commentFormGroup.value.content;
+    this.route.params.subscribe((params) => {
+      let id = params['id'];
     
+      const body = {
+        content: content,
+        owner: {
+          __type: "Pointer",
+          className: "_User",
+          objectId: this.sessionUser.objectId
+        },
+        lesson: {
+          __type: "Pointer",
+          className: "Lesson",
+          objectId: id
+        }
+      }
+
+      this.lessonService.postComment(body).subscribe({
+        next: (comment) => {
+          this.router.navigate([`/home`]);
+        },
+        error: (err) => {
+          console.log(err);
+        }
+      })
+    })
   }
 
 }

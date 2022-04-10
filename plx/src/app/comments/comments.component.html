@@ -1,0 +1,10 @@
+<article class="comment-section">
+    <article class="comment-wrapper">
+        <ng-container *ngIf="comments">
+            <app-comment *ngFor="let comment of comments" [comment]="comment"></app-comment>
+        </ng-container>
+        <ng-container *ngIf="!comments">
+            <p>No Comments!</p>
+        </ng-container>
+    </article>
+</article>
