@@ -1,0 +1,80 @@
+<section class="register-section">
+    <article class="register-form-wrapper">
+        <h2 class="register-form-title">Register</h2>
+        <form class="register-form" [formGroup]="registerFormGroup" (ngSubmit)="handleRegister()">
+            
+            <p *ngIf="errorMessage" class="error">
+                {{errorMessage}}
+            </p>
+
+            <label for="Username"> Username</label>
+            <input formControlName="username" name="username" type="text" placeholder="Username..">
+
+            <div *ngIf="registerFormGroup.controls['username'].touched && registerFormGroup.controls['username'].invalid">
+                <p *ngIf="registerFormGroup.controls['username'].errors!['required']" class="error">
+                    Username is required!
+                </p>
+                <p *ngIf="registerFormGroup.controls['username'].errors!['minlength']" class="error">
+                    Username must be at least 5 chars long!
+                </p>
+            </div>
+
+
+            <label for="email"> Email</label>
+            <input formControlName="email" name="email" type="email" placeholder="Email..">
+
+            <div *ngIf="registerFormGroup.controls['email'].touched && registerFormGroup.controls['email'].invalid">
+                <p *ngIf="registerFormGroup.controls['email'].errors!['required']" class="error">
+                    Email is required!
+                </p>
+                <p *ngIf="registerFormGroup.controls['email'].errors!['email']" class="error">
+                    Email is not valid!
+                </p>
+            </div>
+
+            <!-- <label for="username"> Username</label>
+            <input name="username" type="username" placeholder="Username.."> -->
+
+            <div formGroupName="passwords">
+                <label for="password">Password</label>
+                <input formControlName="password" name="password" type="password" placeholder="Password..">
+
+                <div
+                    *ngIf="passwordsGroup.controls['password'].touched && passwordsGroup.controls['password'].invalid">
+                    <p *ngIf="passwordsGroup.controls['password'].errors!['required']" class="error">
+                        Password is required!
+                    </p>
+                    <p *ngIf="passwordsGroup.controls['password'].errors!['minlength']" class="error">
+                        Password must be at least 8 chars long!
+                    </p>
+                </div>
+
+                <label for="re-password">Repeat Password</label>
+                <input formControlName="password2" name="re-password" type="password" placeholder="Repeat Password..">
+
+                <div *ngIf="passwordsGroup.controls['password2'].touched && passwordsGroup.controls['password2'].invalid">
+                    <p class="error">Passwords do not match!</p>
+                </div>
+
+            </div>
+
+            <label for="phone">Phone Number</label>
+            <input formControlName="phone_number" name="phone" type="phone" placeholder="Phone Number..">
+
+            <div *ngIf="registerFormGroup.controls['phone_number'].touched && registerFormGroup.controls['phone_number'].invalid">
+                <p *ngIf="registerFormGroup.controls['phone_number'].errors!['required']" class="error">
+                    Phone Number is required!
+                </p>
+                <p *ngIf="registerFormGroup.controls['phone_number'].errors!['minlength']" class="error">
+                    Phone Number must be at least 8 chars long!
+                </p>
+                <p *ngIf="registerFormGroup.controls['phone_number'].errors!['maxlength']" class="error">
+                    Phone Number must not be more than 10 chars long!
+                </p>
+            </div>
+
+
+            <button class="register-btn" [disabled]="registerFormGroup.invalid">Register</button>
+        </form>
+    </article>
+</section>

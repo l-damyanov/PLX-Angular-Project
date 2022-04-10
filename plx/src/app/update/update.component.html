@@ -1,0 +1,64 @@
+<section class="update-section">
+    <article class="update-form-wrapper">
+        <h2 class="update-form-title">Edit</h2>
+        <form class="update-form" [formGroup]="updateFormGroup" (ngSubmit)="updateHandler()">
+            <label for="email"> Title</label>
+            <input formControlName="title" name="title" type="title" placeholder="Title.." [value]="selectedLesson?.title">
+
+            <div *ngIf="updateFormGroup.controls['title'].touched && updateFormGroup.controls['title'].invalid">
+                <p *ngIf="updateFormGroup.controls['title'].errors!['required']" class="error">
+                    Title is required!
+                </p>
+                <p *ngIf="updateFormGroup.controls['title'].errors!['minlength']" class="error">
+                    Title must be at least 5 chars long!
+                </p>
+                <p *ngIf="updateFormGroup.controls['title'].errors!['maxlength']" class="error">
+                    Title must be less than 30 chars long!
+                </p>
+            </div>
+
+            <label for="image"> Image</label>
+            <input formControlName="image" name="image" type="text" placeholder="Image.." [value]="selectedLesson?.image">
+
+            <div *ngIf="updateFormGroup.controls['image'].touched && updateFormGroup.controls['image'].invalid">
+                <p *ngIf="updateFormGroup.controls['image'].errors!['required']" class="error">
+                    Image is required!
+                </p>
+            </div>
+
+            <label for="city">City</label>
+            <input formControlName="city" name="city" type="city" placeholder="City.." [value]="selectedLesson?.city">
+
+            <div *ngIf="updateFormGroup.controls['city'].touched && updateFormGroup.controls['city'].invalid">
+                <p *ngIf="updateFormGroup.controls['city'].errors!['required']" class="error">
+                    City is required!
+                </p>
+                <p *ngIf="updateFormGroup.controls['city'].errors!['minlength']" class="error">
+                    City must be at least 3 chars long!
+                </p>
+                <p *ngIf="updateFormGroup.controls['city'].errors!['maxlength']" class="error">
+                    City must be less than 30 chars long!
+                </p>
+            </div>
+
+            <label for="description">Description</label>
+            <input formControlName="description" name="description" type="description" placeholder="Description.." [value]="selectedLesson?.description">
+
+            <div *ngIf="updateFormGroup.controls['description'].touched && updateFormGroup.controls['description'].invalid">
+                <p *ngIf="updateFormGroup.controls['description'].errors!['required']" class="error">
+                    Description is required!
+                </p>
+                <p *ngIf="updateFormGroup.controls['description'].errors!['minlength']" class="error">
+                    Description must be at least 15 chars long!
+                </p>
+                <p *ngIf="updateFormGroup.controls['description'].errors!['maxlength']" class="error">
+                    Description must be less than 300 chars long!
+                </p>
+            </div>
+
+            <label for="online">Online</label><br>
+            <input formControlName="online" type="radio" id="online" name="online" value="online" [checked]="selectedLesson?.online ? true : false">
+            <button class="update-btn" [disabled]="updateFormGroup.invalid">Edit Lesson</button>
+        </form>
+    </article>
+</section>

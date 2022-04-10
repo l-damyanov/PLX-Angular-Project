@@ -1,0 +1,16 @@
+<section class="search">
+    <form [formGroup]="searchFormGroup" (ngSubmit)="searchHandler()">
+        <h2 class="search-title">Search Lessons</h2>
+        <input formControlName="search" class="search-bar" type="text" name="search-bar" id="search-bar"
+            placeholder="Search..">
+    </form>
+    <ng-container *ngIf="!!searchedLessons">
+        <div class="divider"></div>
+        <section class="search-lessons">
+            <h2 class="search-lessons-title">Search Results</h2>
+            <article class="search-lessons-wrapper" *ngIf="searchedLessons">
+                <app-lesson *ngFor="let lesson of searchedLessons" [lesson]="lesson"></app-lesson>
+            </article>
+        </section>
+    </ng-container>
+</section>

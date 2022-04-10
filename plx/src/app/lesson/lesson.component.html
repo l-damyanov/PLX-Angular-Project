@@ -1,0 +1,10 @@
+<article class="lesson">
+    <h2 class="lesson-title">{{lesson?.title}}</h2>
+    <article class="lesson-img-wrapper">
+        <img src="{{lesson?.image}}" alt="image">
+    </article>
+    <article class="lesson-info-wrapper">
+        <p class="lesson-info-city"><i class="fas fa-city"></i>{{lesson?.city}}</p>
+        <button class="lesson-info-btn"><a [routerLink]="['/details', lesson?.objectId]">Details</a></button>
+    </article>
+</article>

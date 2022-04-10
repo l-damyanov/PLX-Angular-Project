@@ -1,0 +1,19 @@
+.lessons {
+    width: 100%;
+    background-color: #DE9151;
+    padding-bottom: 4%;
+    min-height: 548px;
+}
+
+.lessons-wrapper {
+    width: 90%;
+    margin: 0 auto;
+    padding: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4%;
+}
+
+app-lesson {
+    width: 30%;
+}

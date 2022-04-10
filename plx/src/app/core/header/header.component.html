@@ -1,0 +1,22 @@
+<header class="header">
+    <article class="logo-section">
+        <p class="logo-section-logo">PLX</p>
+        <p class="logo-section-text">Private Lessons Everywhere</p>
+    </article>
+    <article class="navigation">
+        <nav class="nav-bar">
+            <ul class="nav-bar-list">
+                <li class="nav-bar-list-item"><a routerLink="/">Lessons</a></li>
+                <ng-container *ngIf="!userService.isLogged">
+                    <li class="nav-bar-list-item"><a routerLink="/login">Login</a></li>
+                    <li class="nav-bar-list-item"><a routerLink="/register">Register</a></li>
+                </ng-container>
+                <ng-container *ngIf="userService.isLogged">
+                    <li class="nav-bar-list-item"><a routerLink="/profile">Profile</a></li>
+                    <li class="nav-bar-list-item"><a routerLink="/create">Create Ad</a></li>
+                    <li class="nav-bar-list-item"><a href="#" (click)="logout()">Logout</a></li>
+                </ng-container>
+            </ul>
+        </nav>
+    </article>
+</header>

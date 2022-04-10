@@ -1,0 +1,10 @@
+<app-search></app-search>
+<div class="divider"></div>
+<section class="lessons">
+    <article class="lessons-wrapper" *ngIf="lessons">
+        <app-lesson *ngFor="let lesson of lessons" [lesson]="lesson"></app-lesson>
+    </article>
+    <div *ngIf="!lessons">
+        Loading...
+    </div>
+</section>

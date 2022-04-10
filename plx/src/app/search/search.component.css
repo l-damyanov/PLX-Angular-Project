@@ -1,0 +1,48 @@
+.search {
+    width: 100%;
+    text-align: center;
+    background-color: #2E2E3A;
+    min-height: 200px;
+    margin-top: -24px;
+    margin-bottom: 0;
+}
+
+.search-title {
+    font-size: 1.8rem;
+    padding-top: 32px;
+    color: #F2D3BA;
+}
+
+.search-bar {
+    width: 30%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 2px solid #F2D3BA;
+    margin-bottom: 4%;
+}
+
+.search-lessons {
+    padding-top: 1%;
+    min-height: 400px;
+    height: auto;
+    width: 100%;
+    background-color: #DE9151;
+    padding-bottom: 4%;
+}
+
+.search-lessons-wrapper {
+    width: 90%;
+    margin: 0 auto;
+    padding: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4%;
+}
+
+
+.search-lessons-title {
+    color: #2E2E3A;
+    text-align: center;
+    margin-top: 0;
+    font-size: 2rem;
+}

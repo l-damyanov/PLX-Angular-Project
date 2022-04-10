@@ -1,0 +1,64 @@
+<section class="create-section">
+    <article class="create-form-wrapper">
+        <h2 class="create-form-title">Create</h2>
+        <form class="create-form" [formGroup]="createFormGroup" (ngSubmit)="createHandler()">
+            <label for="title"> Title</label>
+            <input formControlName="title" name="title" type="title" placeholder="Title..">
+
+            <div *ngIf="createFormGroup.controls['title'].touched && createFormGroup.controls['title'].invalid">
+                <p *ngIf="createFormGroup.controls['title'].errors!['required']" class="error">
+                    Title is required!
+                </p>
+                <p *ngIf="createFormGroup.controls['title'].errors!['minlength']" class="error">
+                    Title must be at least 5 chars long!
+                </p>
+                <p *ngIf="createFormGroup.controls['title'].errors!['maxlength']" class="error">
+                    Title must be less than 30 chars long!
+                </p>
+            </div>
+
+            <label for="city">City</label>
+            <input formControlName="city" name="city" type="city" placeholder="City..">
+
+            <div *ngIf="createFormGroup.controls['city'].touched && createFormGroup.controls['city'].invalid">
+                <p *ngIf="createFormGroup.controls['city'].errors!['required']" class="error">
+                    City is required!
+                </p>
+                <p *ngIf="createFormGroup.controls['city'].errors!['minlength']" class="error">
+                    City must be at least 3 chars long!
+                </p>
+                <p *ngIf="createFormGroup.controls['city'].errors!['maxlength']" class="error">
+                    City must be less than 30 chars long!
+                </p>
+            </div>
+
+            <label for="description">Description</label>
+            <input formControlName="description" name="description" type="description" placeholder="Description..">
+
+            <div *ngIf="createFormGroup.controls['description'].touched && createFormGroup.controls['description'].invalid">
+                <p *ngIf="createFormGroup.controls['description'].errors!['required']" class="error">
+                    Description is required!
+                </p>
+                <p *ngIf="createFormGroup.controls['description'].errors!['minlength']" class="error">
+                    Description must be at least 15 chars long!
+                </p>
+                <p *ngIf="createFormGroup.controls['description'].errors!['maxlength']" class="error">
+                    Description must be less than 300 chars long!
+                </p>
+            </div>
+
+            <label for="image"> Image</label>
+            <input formControlName="image" name="image" type="url" placeholder="Image..">
+
+            <div *ngIf="createFormGroup.controls['image'].touched && createFormGroup.controls['image'].invalid">
+                <p *ngIf="createFormGroup.controls['image'].errors!['required']" class="error">
+                    Image is required!
+                </p>
+            </div>
+
+            <label for="online">Online</label><br>
+            <input formControlName="online" type="radio" id="online" name="online" value="online">
+            <button class="create-btn" [disabled]="createFormGroup.invalid">Create</button>
+        </form>
+    </article>
+</section>

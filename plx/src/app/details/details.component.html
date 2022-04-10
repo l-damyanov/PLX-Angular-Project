@@ -1,0 +1,33 @@
+<article class="lesson-details">
+    <article class="lesson-details-wrapper">
+        <article class="lesson-details-left">
+            <h2 class="lesson-details-title">{{selectedLesson?.title}}</h2>
+            <article class="lesson-details-img-wrapper">
+                <img src="{{selectedLesson?.image}}" alt="image">
+            </article>
+        </article>
+        <article class="lesson-details-right">
+            <article class="lesson-details-info">
+                <p class="lesson-details-description">
+                    {{selectedLesson?.description}}
+                </p>
+                <span class="lesson-details-likes">Likes: {{selectedLesson?.likes?.length}}</span>
+            </article>
+        </article>
+    </article>
+    <article class="lesson-details-btn-wrapper">
+        <ng-container *ngIf="isOwner">
+            <button class="lesson-details-btn edit"><a routerLink="/update/{{selectedLesson?.objectId}}">Edit</a></button>
+            <button class="lesson-details-btn delete"><a routerLink="/" (click)="handleDelete()">Delete</a></button>
+        </ng-container>
+
+        <button class="lesson-details-btn like"><a href="">Like</a></button>
+    </article>
+    <article class="lesson-information">
+        <span class="lesson-information-span city"><i class="fas fa-city"></i>{{selectedLesson?.city}}</span>
+        <span class="lesson-information-span owner"><i class="fas fa-user"></i>{{ownerUser?.phone_number}}</span>
+        <span class="lesson-information-span online" *ngIf="selectedLesson"><i class="fas fa-compass"></i>
+            {{selectedLesson?.online ? 'Online' : 'In Person'}}
+        </span>
+    </article>
+</article>

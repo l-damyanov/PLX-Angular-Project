@@ -1,0 +1,38 @@
+<section class="login-section">
+    <article class="login-form-wrapper">
+        <h2 class="login-form-title">Login</h2>
+        <form class="login-form" [formGroup]="loginFormGroup" (ngSubmit)="handleLogin()">
+            
+            <p *ngIf="errorMessage" class="error">
+                {{errorMessage}}
+            </p>
+
+            <label for="email"> Email</label>
+            <input formControlName="email" name="email" type="email" placeholder="Email..">
+            
+            <div *ngIf="loginFormGroup.controls['email'].touched && loginFormGroup.controls['email'].invalid">
+                <p *ngIf="loginFormGroup.controls['email'].errors!['required']" class="error">
+                    Email is required!
+                </p>
+                <p *ngIf="loginFormGroup.controls['email'].errors!['email']" class="error">
+                    Email is not valid!
+                </p>
+            </div>
+
+            <label for="password">Password</label>
+            <input formControlName="password" name="password" type="password" placeholder="Password..">
+
+            <div *ngIf="loginFormGroup.controls['password'].touched && loginFormGroup.controls['password'].invalid">
+                <p *ngIf="loginFormGroup.controls['password'].errors!['required']" class="error">
+                    Password is required!
+                </p>
+                <p *ngIf="loginFormGroup.controls['password'].errors!['minlength']" class="error">
+                    Password must be at least 8 chars long!
+                </p>
+            </div>
+
+
+            <button [disabled]="loginFormGroup.invalid" class="login-btn">Login</button>
+        </form>
+    </article>
+</section>
