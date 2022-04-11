@@ -10,3 +10,9 @@
     padding: 12px 8px;
     background-color: #DE9151;
 }
+
+@media screen and (max-width: 1024px) {
+    .comment-wrapper {
+        width: 80%;
+    }
+}

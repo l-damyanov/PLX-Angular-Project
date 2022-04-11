@@ -160,3 +160,46 @@
     margin: 6px;
     margin-bottom: 12px;
 }
+
+@media screen and (max-width: 1024px) {
+    .lesson-details-wrapper {
+        width: 80%;
+    }
+
+    .comment-section-title h2 {
+        width: 80%;
+    }
+
+    .comment-form form {
+        width: 80%;
+    }
+
+    .lesson-information {
+        margin-top: -20%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .lesson-information {
+        margin-top: -25%;
+        gap: 15%;
+    }
+
+    .lesson-details-btn-wrapper {
+        margin-top: -15%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .lesson-information {
+        flex-direction: column;
+        justify-content: center;
+        align-items: left;
+        margin-left: 15%;
+        margin-top: -45%;
+    }
+
+    .comment-btn {
+        width: 24%;
+    }
+}

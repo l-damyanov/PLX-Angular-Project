@@ -17,3 +17,28 @@
 app-lesson {
     width: 30%;
 }
+
+
+@media screen and (min-width: 600px) {
+    app-lesson {
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    app-lesson{
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    app-lesson{
+        width: 48%;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    app-lesson{
+        width: 48%;
+    }
+}
